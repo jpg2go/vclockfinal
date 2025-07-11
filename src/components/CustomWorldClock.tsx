@@ -209,22 +209,22 @@ const CustomWorldClock: React.FC = () => {
       </div>
       {/* City Clocks Grid - only show if multiple cities */}
       {citiesToShow.length > 1 && (
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-12 mt-8 px-3 sm:px-6" style={{paddingTop: 20}}>
+        <div className="bg-white dark:bg-black border-b border-gray-200 dark:border-gray-700 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 mb-0 mt-0 p-4 sm:p-8 lg:p-12" style={{paddingTop: 20}}>
           {citiesToShow.map(city => {
             const time12 = getTimeInZone(city.tz, { hour12: true });
             const [time, ampm] = time12.split(' ');
             return (
-              <div key={city.tz} className="bg-white rounded-lg shadow p-3 sm:py-6 sm:px-6 flex flex-col items-center relative">
+              <div key={city.tz} className="bg-gray-50 dark:bg-gray-800 rounded-lg shadow p-3 sm:py-6 sm:px-6 flex flex-col items-center relative border border-gray-200 dark:border-gray-600">
                 <div className="text-sm sm:text-base font-medium mb-2 text-center">{city.name}</div>
-                <div className="font-nunito text-xl sm:text-3xl mb-1" style={{ color: '#555555', fontWeight: 900, letterSpacing: '0.04em', textAlign: 'center' }}>{time} <span style={{ fontSize: '0.5em', marginLeft: '0.25em', fontWeight: 400, letterSpacing: '0.08em', verticalAlign: 'baseline' }}>{ampm}</span></div>
-                <div className="text-gray-500 text-xs mb-1">Today</div>
+                <div className="font-nunito text-xl sm:text-3xl mb-1 text-gray-800 dark:text-white" style={{ color: '#555555', fontWeight: 900, letterSpacing: '0.04em', textAlign: 'center' }}>{time} <span style={{ fontSize: '0.5em', marginLeft: '0.25em', fontWeight: 400, letterSpacing: '0.08em', verticalAlign: 'baseline' }}>{ampm}</span></div>
+                <div className="text-gray-500 dark:text-gray-400 text-xs mb-1">Today</div>
               </div>
             );
           })}
         </div>
       )}
       {/* Instructions Section */}
-      <div className="mb-8 sm:mb-12 mt-8 mx-3 sm:mx-6 rounded-lg bg-white dark:bg-black p-6 sm:p-10 border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-black border-b border-gray-200 dark:border-gray-700 p-4 sm:p-8 lg:p-12">
         <h4 className="text-base sm:text-lg font-medium text-gray-800 mb-2">How to Use the World Clock</h4>
         <div className="text-gray-600 text-xs sm:text-sm space-y-2">
           <p>
@@ -247,21 +247,21 @@ const CustomWorldClock: React.FC = () => {
         </div>
       </div>
       {/* Popular Cities Section */}
-      <div className="mb-10 sm:mb-16 mt-8 mx-3 sm:mx-6 rounded-lg bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-blue-900 dark:to-blue-800 p-6 sm:p-10 border border-blue-100 dark:border-blue-700">
+      <div className="bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-blue-900 dark:to-blue-800 border-b border-blue-100 dark:border-blue-700 p-4 sm:p-8 lg:p-12">
         <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-6 flex items-center gap-2">
           <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
           Popular Cities & Time Zones
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {popularCities.map((col, i) => (
-            <div key={i} className="bg-white rounded-xl shadow-md py-6 px-4 flex flex-col gap-3 border border-blue-100 hover:shadow-xl transition-shadow">
+            <div key={i} className="bg-white dark:bg-gray-800 rounded-xl shadow-md py-6 px-4 flex flex-col gap-3 border border-blue-100 dark:border-blue-700 hover:shadow-xl transition-shadow">
               <div className="flex items-center gap-2 mb-2">
                 <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 0 20" /></svg>
-                <span className="text-blue-700 font-semibold text-base">Cities</span>
+                <span className="text-blue-700 dark:text-blue-300 font-semibold text-base">Cities</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {col.map(city => (
-                  <span key={city} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium shadow-sm hover:bg-blue-200 transition-colors cursor-pointer border border-blue-200">{city}</span>
+                  <span key={city} className="bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-xs font-medium shadow-sm hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors cursor-pointer border border-blue-200 dark:border-blue-600">{city}</span>
                 ))}
               </div>
             </div>
