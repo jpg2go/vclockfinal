@@ -209,14 +209,16 @@ const CustomWorldClock: React.FC = () => {
       </div>
       {/* City Clocks Grid - only show if multiple cities */}
       {citiesToShow.length > 1 && (
-        <div className="bg-white dark:bg-black border-b border-gray-200 dark:border-gray-700 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 mb-0 mt-0 p-4 sm:p-8 lg:p-12" style={{paddingTop: 20}}>
+        <div className="bg-white dark:bg-black border-b border-gray-200 dark:border-gray-700 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 p-4 sm:p-8 lg:p-12">
           {citiesToShow.map(city => {
             const time12 = getTimeInZone(city.tz, { hour12: true });
             const [time, ampm] = time12.split(' ');
             return (
-              <div key={city.tz} className="bg-gray-50 dark:bg-gray-800 rounded-lg shadow p-3 sm:py-6 sm:px-6 flex flex-col items-center relative border border-gray-200 dark:border-gray-600">
+              <div key={city.tz} className="bg-gray-50 dark:bg-gray-800 rounded-lg shadow p-3 sm:p-6 flex flex-col items-center relative border border-gray-200 dark:border-gray-600">
                 <div className="text-sm sm:text-base font-medium mb-2 text-center">{city.name}</div>
-                <div className="font-nunito text-xl sm:text-3xl mb-1 text-gray-800 dark:text-white" style={{ color: '#555555', fontWeight: 900, letterSpacing: '0.04em', textAlign: 'center' }}>{time} <span style={{ fontSize: '0.5em', marginLeft: '0.25em', fontWeight: 400, letterSpacing: '0.08em', verticalAlign: 'baseline' }}>{ampm}</span></div>
+                <div className="font-nunito text-xl sm:text-3xl mb-1" style={{ color: '#555555', fontWeight: 900, letterSpacing: '0.04em', textAlign: 'center' }}>
+                  {time} <span style={{ fontSize: '0.5em', marginLeft: '0.25em', fontWeight: 400, letterSpacing: '0.08em', verticalAlign: 'baseline' }}>{ampm}</span>
+                </div>
                 <div className="text-gray-500 dark:text-gray-400 text-xs mb-1">Today</div>
               </div>
             );
